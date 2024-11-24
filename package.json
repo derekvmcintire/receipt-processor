@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx ts-node src/server.ts",
     "pretty": "prettier --write .",
-    "pretty:check": "prettier --check ."
+    "pretty:check": "prettier --check . --fix",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -16,9 +17,13 @@
     "fastify": "^5.1.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.15.0",
     "@types/node": "^22.9.3",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.15.0"
   }
 }
