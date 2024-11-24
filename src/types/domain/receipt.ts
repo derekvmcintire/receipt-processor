@@ -1,5 +1,5 @@
 export interface ReceiptItem {
-  description: string;
+  shortDescription: string;
   price: string;
 }
 
