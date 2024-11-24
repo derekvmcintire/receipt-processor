@@ -1,8 +1,8 @@
 import { randomUUID } from 'crypto';
 import { Receipt } from '../../../../types/domain/receipt';
 import { PointsCalculator } from '../../utils/points-calculator';
-import { InMemoryReceiptRepository } from '../repositories/InMemoryReceiptRepository';
 import { HTTPError } from '../../../../interface/errors/http-error';
+import { InMemoryReceiptDatabase } from '../../../../infrastructure/database/in-memory-database';
 
 /**
  * Service class that handles the core business logic for processing receipts.
@@ -16,7 +16,7 @@ export class ReceiptService {
    * @param pointsCalculator
    */
   constructor(
-    private repository: InMemoryReceiptRepository,
+    private repository: InMemoryReceiptDatabase,
     private pointsCalculator: PointsCalculator
   ) {}
 

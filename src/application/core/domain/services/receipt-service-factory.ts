@@ -1,5 +1,5 @@
+import { InMemoryReceiptDatabase } from '../../../../infrastructure/database/in-memory-database';
 import { PointsCalculator } from '../../utils/points-calculator';
-import { InMemoryReceiptRepository } from '../repositories/InMemoryReceiptRepository';
 import { ReceiptService } from './receipt-service';
 
 /**
@@ -8,7 +8,7 @@ import { ReceiptService } from './receipt-service';
  * @returns {ReceiptService}
  */
 export const getReceiptService = (): ReceiptService => {
-  const inMemoryReceiptRepository = new InMemoryReceiptRepository();
+  const inMemoryReceiptRepository = new InMemoryReceiptDatabase();
   const pointsCalculator = new PointsCalculator();
 
   return new ReceiptService(inMemoryReceiptRepository, pointsCalculator);
