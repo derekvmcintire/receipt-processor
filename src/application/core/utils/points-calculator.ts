@@ -36,17 +36,19 @@ export class PointsCalculator {
   private withReceipt(receipt: Receipt) {
     return {
       /**
-       * Rule 1: Calculate points based on the number of alphanumeric characters
-       * in the retailer name.
+       * Rule 1: One point for every alphanumeric character in the retailer name.
        *
        * @returns Points for alphanumeric characters in the retailer name.
        */
       calculateAlphaNumericCharactersPoints: () => {
-        return receipt.retailer.replace(/[^a-zA-Z0-9]/g, '').length;
+        // Log the result of the regex to inspect what's happening
+        const cleanedRetailer = receipt.retailer.replace(/[^a-zA-Z0-9]/g, '');
+        console.log('Cleaned retailer:', cleanedRetailer); // Log output
+        return cleanedRetailer.length; // Count alphanumeric characters only
       },
 
       /**
-       * Rule 2: Award 50 points if the total amount is a round dollar amount.
+       * Rule 2: 50 points if the total is a round dollar amount with no cents.
        *
        * @returns Points for round dollar totals.
        */
@@ -55,7 +57,7 @@ export class PointsCalculator {
       },
 
       /**
-       * Rule 3: Award 25 points if the total is a multiple of 0.25.
+       * Rule 3: 25 points if the total is a multiple of 0.25.
        *
        * @returns Points for totals that are multiples of 0.25.
        */
@@ -64,7 +66,7 @@ export class PointsCalculator {
       },
 
       /**
-       * Rule 4: Award 5 points for every two items in the receipt.
+       * Rule 4: 5 points for every two items on the receipt.
        *
        * @returns Points based on the number of items on the receipt.
        */
@@ -73,8 +75,9 @@ export class PointsCalculator {
       },
 
       /**
-       * Rule 5: Award points for items with descriptions whose length is a multiple of 3.
-       * Points awarded are 20% of the item's price (rounded up).
+       * Rule 5: If the trimmed length of the item description is a multiple of 3,
+       * multiply the price by 0.2 and round up to the nearest integer. The result
+       * is the number of points earned.
        *
        * @returns Points for item descriptions with a length that is a multiple of 3.
        */
@@ -90,7 +93,7 @@ export class PointsCalculator {
       },
 
       /**
-       * Rule 6: Award 6 points if the day of the purchase date is an odd number.
+       * Rule 6: 6 points if the day in the purchase date is odd.
        *
        * @returns Points based on whether the purchase date day is odd.
        */
@@ -100,7 +103,7 @@ export class PointsCalculator {
       },
 
       /**
-       * Rule 7: Award 10 points if the purchase time is between 2:00 PM and 4:00 PM.
+       * Rule 7: 10 points if the time of purchase is after 2:00pm and before 4:00pm.
        *
        * @returns Points for purchases made in the specified time range.
        */
