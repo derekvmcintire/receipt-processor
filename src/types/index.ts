@@ -18,3 +18,11 @@ export interface ReceiptWithId extends Receipt {
 export interface PointsResponse {
   points: number;
 }
+
+export type PostReceiptResponse = {
+  id: string;
+}
+
+export type GetReceiptResponse = {
+  points: number;
+}
