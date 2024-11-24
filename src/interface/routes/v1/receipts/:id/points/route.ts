@@ -1,9 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import {
-  API_BASE_PATH,
   API_POINTS_PATH,
   API_RECEIPTS_PATH,
-  API_VERSION_ONE,
 } from '../../../../../../constants';
 import { GetPointsResponse } from '../../../../../../types/http/get-receipt-points';
 
@@ -16,7 +14,8 @@ export default async function getPointsRoute(
   fastify: FastifyInstance,
   _options: Object
 ) {
-  const routePath = `${API_BASE_PATH}${API_VERSION_ONE}${API_RECEIPTS_PATH}:id/${API_POINTS_PATH}`;
+  const routePath = `/${API_RECEIPTS_PATH}/:id/${API_POINTS_PATH}`;
+  console.log(`Registering route: ${routePath}`);
 
   fastify.get<{ Params: { id: string } }>(
     routePath,

@@ -1,12 +1,7 @@
 import { FastifyInstance } from 'fastify';
 import { Receipt } from '../../../../../types/domain/receipt';
 import { PostReceiptResponse } from '../../../../../types/http/process-receipt';
-import {
-  API_BASE_PATH,
-  API_PROCESS_PATH,
-  API_RECEIPTS_PATH,
-  API_VERSION_ONE,
-} from '../../../../../constants';
+import { API_PROCESS_PATH, API_RECEIPTS_PATH } from '../../../../../constants';
 
 /**
  * A plugin that provides encapsulated routes
@@ -17,8 +12,9 @@ export default async function processReceiptRoute(
   fastify: FastifyInstance,
   _options: Object
 ) {
-  const routePath = `${API_BASE_PATH}${API_VERSION_ONE}${API_RECEIPTS_PATH}${API_PROCESS_PATH}`;
+  const routePath = `/${API_RECEIPTS_PATH}/${API_PROCESS_PATH}`;
 
+  console.log(`Registering route: ${routePath}`);
   fastify.post<{ Body: Receipt }>(routePath, async (_request, _reply) => {
     // const receipt: Receipt = request.body;
 
