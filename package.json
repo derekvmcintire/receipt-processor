@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx ts-node src/server.ts"
+    "dev": "npx ts-node src/server.ts",
+    "pretty": "prettier --write .",
+    "pretty:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.9.3",
+    "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   }

@@ -21,8 +21,8 @@ export interface PointsResponse {
 
 export type PostReceiptResponse = {
   id: string;
-}
+};
 
 export type GetReceiptResponse = {
   points: number;
-}
+};
