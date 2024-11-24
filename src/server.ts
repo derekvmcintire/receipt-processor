@@ -1,34 +1,15 @@
 import Fastify from 'fastify';
-import { GetReceiptResponse, PostReceiptResponse, Receipt } from './types';
+import getPointsRoute from './routes/receipts/:id/points';
+import processReceiptRoute from './routes/receipts/process';
 
+// Instantiate Fastify
 const fastify = Fastify({
   logger: true,
 });
 
-// Basic route to check if Fastify is working
-fastify.get('/', async (_request, _reply) => {
-  return { message: 'Receipt Processor API' };
-});
-
-// Basic POST route
-fastify.post<{ Body: Receipt }>('/receipts/process', async (_request, _reply) => {
-  // const receipt: Receipt = request.body;
-
-  const receiptId = '1';
-  const response: PostReceiptResponse = { id: receiptId }
-
-  return response;
-});
-
-// Basic GET route
-fastify.get<{ Params: { id: string } }>('/receipts/:id/points', async (_request, _reply) => {
-  // const { id } = request.params;
-
-  const points = 32;
-  const response: GetReceiptResponse = { points }
-
-  return response;
-});
+// Register routes
+fastify.register(processReceiptRoute);
+fastify.register(getPointsRoute);
 
 // Start the server
 const start = async () => {
@@ -43,4 +24,5 @@ const start = async () => {
   })
 };
 
+// Start the server
 start();
