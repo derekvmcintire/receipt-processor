@@ -15,7 +15,6 @@ export default async function getPointsRoute(
   _options: Object
 ) {
   const routePath = `/${API_RECEIPTS_PATH}/:id/${API_POINTS_PATH}`;
-  console.log(`Registering route: ${routePath}`);
 
   fastify.get<{ Params: { id: string } }>(
     routePath,

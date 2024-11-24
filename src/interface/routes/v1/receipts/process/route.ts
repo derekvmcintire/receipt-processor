@@ -14,7 +14,6 @@ export default async function processReceiptRoute(
 ) {
   const routePath = `/${API_RECEIPTS_PATH}/${API_PROCESS_PATH}`;
 
-  console.log(`Registering route: ${routePath}`);
   fastify.post<{ Body: Receipt }>(routePath, async (_request, _reply) => {
     // const receipt: Receipt = request.body;
 
