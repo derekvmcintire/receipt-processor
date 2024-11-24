@@ -1,7 +1,7 @@
 import { Receipt } from '../domain/receipt';
 import { mockReceipt } from '../mocks';
 
-export interface ProcessReceiptPayload extends Receipt {}
+export type ProcessReceiptPayload = Receipt;
 
 export type PostReceiptResponse = {
   id: string;
