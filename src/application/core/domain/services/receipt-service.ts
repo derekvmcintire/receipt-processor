@@ -2,7 +2,7 @@ import { randomUUID } from 'crypto';
 import { Receipt } from '../../../../types/domain/receipt';
 import { PointsCalculator } from '../../utils/points-calculator';
 import { InMemoryReceiptRepository } from '../repositories/InMemoryReceiptRepository';
-import { HTTPError } from '../../../../interface/plugins/errors';
+import { HTTPError } from '../../../../interface/errors/http-error';
 
 /**
  * Service class that handles the core business logic for processing receipts.
@@ -12,8 +12,8 @@ export class ReceiptService {
   /**
    * Constructor to initialize the ReceiptService with a repository and points calculator.
    *
-   * @param repository - An instance of the InMemoryReceiptRepository to save receipts.
-   * @param pointsCalculator - An instance of PointsCalculator to calculate reward points for receipts.
+   * @param repository
+   * @param pointsCalculator
    */
   constructor(
     private repository: InMemoryReceiptRepository,
@@ -24,7 +24,7 @@ export class ReceiptService {
    * Validates the receipt to ensure all required fields are present.
    * Throws an HTTPError with status 400 if any required field is missing.
    *
-   * @param receipt - The receipt object to validate.
+   * @param receipt
    */
   validateReceipt(receipt: Receipt): void {
     if (
@@ -44,7 +44,7 @@ export class ReceiptService {
    * Calculates the reward points for a receipt based on predefined business rules.
    * Delegates the calculation to the PointsCalculator.
    *
-   * @param receipt - The receipt object to calculate points for.
+   * @param receipt
    * @returns The total points calculated for the receipt.
    */
   calculatePoints(receipt: Receipt): number {
@@ -71,8 +71,8 @@ export class ReceiptService {
    * The main method that processes a receipt: validates, calculates points, and saves it.
    * Throws errors if any of the individual steps fail.
    *
-   * @param receipt - The receipt object to process.
-   * @returns The unique ID of the processed receipt.
+   * @param receipt
+   * @returns The unique id of the processed receipt.
    */
   processReceipt(receipt: Receipt): string {
     this.validateReceipt(receipt);

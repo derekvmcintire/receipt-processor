@@ -3,12 +3,7 @@ import { InMemoryReceiptRepository } from '../repositories/InMemoryReceiptReposi
 import { ReceiptService } from './receipt-service';
 
 /**
- * Factory function to create and return a new instance of ReceiptService.
- * This function encapsulates the creation of the ReceiptService along with
- * its dependencies, namely the InMemoryReceiptRepository and PointsCalculator.
- *
- * It simplifies the instantiation process and ensures that the ReceiptService
- * is correctly configured with all required dependencies.
+ * Factory function to ecnapsulate the creation of ReceiptService and its dependencies
  *
  * @returns {ReceiptService}
  */

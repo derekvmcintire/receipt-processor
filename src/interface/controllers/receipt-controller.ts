@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import { Receipt } from '../../types/domain/receipt';
 import { getReceiptService } from '../../application/core/domain/services/receipt-service-factory';
 import { PostReceiptResponse } from '../../types/http/process-receipt';
-import { HTTPError } from '../plugins/errors';
+import { HTTPError } from '../errors/http-error';
 
 const receiptService = getReceiptService();
 
@@ -16,8 +16,8 @@ const receiptService = getReceiptService();
  * @param {FastifyReply} reply - Fastify reply object used to send the response back to the client.
  */
 export async function processReceiptController(
-  request: FastifyRequest<{ Body: Receipt }>, // Type of the request body is a Receipt
-  reply: FastifyReply // Type of the reply is FastifyReply
+  request: FastifyRequest<{ Body: Receipt }>,
+  reply: FastifyReply
 ) {
   try {
     const receipt = request.body;
