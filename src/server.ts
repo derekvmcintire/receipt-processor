@@ -1,6 +1,6 @@
 import Fastify from 'fastify';
-import getPointsRoute from './routes/receipts/:id/points';
-import processReceiptRoute from './routes/receipts/process';
+import getPointsRoute from './interface/routes/v1/receipts/:id/points/route';
+import processReceiptRoute from './interface/routes/v1/receipts/process/route';
 
 // Instantiate Fastify
 const fastify = Fastify({

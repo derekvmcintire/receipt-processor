@@ -1,8 +1,14 @@
 import { FastifyInstance } from 'fastify';
-import { GetReceiptResponse } from '../../../../types';
+import {
+  API_BASE_PATH,
+  API_POINTS_PATH,
+  API_RECEIPTS_PATH,
+  API_VERSION_ONE,
+} from '../../../../../../constants';
+import { GetPointsResponse } from '../../../../../../types/http/get-receipt-points';
 
 /**
- * A plugin that provide encapsulated routes
+ * A plugin that provides encapsulated routes
  * @param {FastifyInstance} fastify encapsulated fastify instance
  * @param {Object} _options plugin options, refer to https://fastify.dev/docs/latest/Reference/Plugins/#plugin-options
  */
@@ -10,13 +16,15 @@ export default async function getPointsRoute(
   fastify: FastifyInstance,
   _options: Object
 ) {
+  const routePath = `${API_VERSION_ONE}${API_BASE_PATH}${API_RECEIPTS_PATH}:id/${API_POINTS_PATH}`;
+
   fastify.get<{ Params: { id: string } }>(
-    '/receipts/:id/points',
+    routePath,
     async (_request, _reply) => {
       // const { id } = request.params;
 
       const points = 32;
-      const response: GetReceiptResponse = { points };
+      const response: GetPointsResponse = { points };
 
       return response;
     }
