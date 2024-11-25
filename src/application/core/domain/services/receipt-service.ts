@@ -3,14 +3,7 @@ import { Receipt } from '../../../../types/domain/receipt';
 import { PointsCalculator } from '../../utils/points-calculator';
 import { HTTPError } from '../../../../interface/errors/http-error';
 import { InMemoryReceiptDatabase } from '../../../../infrastructure/database/in-memory-receipt-database';
-
-// Define an interface for ReceiptService
-export interface IReceiptService {
-  processReceipt(receipt: Receipt): string; // Returns receipt ID
-  validateReceipt(receipt: Receipt): void;
-  calculatePoints(receipt: Receipt): number;
-  saveReceipt(id: string, receipt: Receipt, points: number): void;
-}
+import { IReceiptService } from './receipt-service-interface';
 
 /**
  * Service class that handles the core business logic for processing receipts.
