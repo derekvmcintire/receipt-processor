@@ -10,7 +10,7 @@ const fastify = Fastify({
 });
 
 // Basic route to check if Fastify is working
-fastify.get('/', async (_request, _reply) => {
+fastify.get('/', async () => {
   return { message: 'Receipt Processor API' };
 });
 
