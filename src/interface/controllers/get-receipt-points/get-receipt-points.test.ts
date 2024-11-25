@@ -1,12 +1,12 @@
-import { getReceiptService } from '../../application/core/domain/services/receipt-service-factory';
-import { HTTPError } from '../errors/http-error';
-import { GetPointsResponse } from '../../types/http/get-receipt-points';
+import { getReceiptService } from '../../../application/core/domain/services/receipt-service-factory';
+import { HTTPError } from '../../errors/http-error';
+import { GetPointsResponse } from '../../../types/http/get-receipt-points';
 import { getReceiptPointsController } from './get-receipt-points';
-import { IReceiptService } from '../../application/core/domain/services/receipt-service-interface';
+import { IReceiptService } from '../../../application/core/domain/services/receipt-service-interface';
 import { FastifyRequest, FastifyReply } from 'fastify';
 
 jest.mock(
-  '../../application/core/domain/services/receipt-service-factory',
+  '../../../application/core/domain/services/receipt-service-factory',
   () => ({
     getReceiptService: jest.fn(),
   })

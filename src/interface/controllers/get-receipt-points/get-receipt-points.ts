@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { getReceiptService } from '../../application/core/domain/services/receipt-service-factory';
-import { HTTPError } from '../errors/http-error';
-import { GetPointsResponse } from '../../types/http/get-receipt-points';
+import { getReceiptService } from '../../../application/core/domain/services/receipt-service-factory';
+import { HTTPError } from '../../errors/http-error';
+import { GetPointsResponse } from '../../../types/http/get-receipt-points';
 
 /**
  * Controller for handling the "get receipt points" API request.
