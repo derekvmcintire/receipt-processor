@@ -4,7 +4,7 @@ import {
   API_RECEIPTS_PATH,
 } from '../../../../../../constants';
 import { GetPointsResponse } from '../../../../../../types/http/get-receipt-points';
-import { getReceiptPointsController } from '../../../../../controllers/get-receipt-points';
+import { getReceiptPointsController } from '../../../../../controllers/get-receipt-points/get-receipt-points-controller';
 
 const RECEIPT_POINTS_URL_PATH = `/${API_RECEIPTS_PATH}/:id/${API_POINTS_PATH}`;
 
