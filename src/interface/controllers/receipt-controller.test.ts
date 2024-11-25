@@ -31,9 +31,6 @@ describe('processReceiptController', () => {
 
     mockedReceiptService = {
       processReceipt: jest.fn().mockReturnValue('12345'), // Mock processReceipt to return a receipt ID
-      validateReceipt: jest.fn(),
-      calculatePoints: jest.fn(),
-      saveReceipt: jest.fn(),
     };
 
     // Mock the getReceiptService factory function to return the mocked ReceiptService
