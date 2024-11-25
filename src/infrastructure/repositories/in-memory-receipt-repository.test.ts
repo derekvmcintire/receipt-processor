@@ -1,8 +1,8 @@
 import { Receipt } from '../../types/domain/receipt';
-import { InMemoryReceiptDatabase } from './in-memory-receipt-database';
+import { InMemoryReceiptRepository } from './in-memory-receipt-repository';
 
 describe('InMemoryReceiptRepository', () => {
-  let repository: InMemoryReceiptDatabase;
+  let repository: InMemoryReceiptRepository;
 
   const mockReceipt: Receipt = {
     retailer: 'Target',
@@ -19,7 +19,7 @@ describe('InMemoryReceiptRepository', () => {
   };
 
   beforeEach(() => {
-    repository = new InMemoryReceiptDatabase();
+    repository = new InMemoryReceiptRepository();
   });
 
   describe('save', () => {

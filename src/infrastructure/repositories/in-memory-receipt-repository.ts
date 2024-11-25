@@ -1,4 +1,4 @@
-import { IReceiptRepository } from '../../application/core/domain/repositories/in-memory-receipt-repository';
+import { IReceiptRepository } from '../../application/core/domain/repositories/receipt-repository-interface';
 import { Receipt } from '../../types/domain/receipt';
 import { GetPointsResponse } from '../../types/http/get-receipt-points';
 
@@ -7,7 +7,7 @@ import { GetPointsResponse } from '../../types/http/get-receipt-points';
  * Data is stored in a Map object for efficient key-value management.
  * Maps each receipt ID (string) to an object containing the receipt and its associated points.
  */
-export class InMemoryReceiptDatabase implements IReceiptRepository {
+export class InMemoryReceiptRepository implements IReceiptRepository {
   /**
    * In-memory store for receipts.
    */

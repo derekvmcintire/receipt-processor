@@ -1,4 +1,4 @@
-import { InMemoryReceiptDatabase } from '../../../../infrastructure/database/in-memory-receipt-database';
+import { InMemoryReceiptRepository } from '../../../../infrastructure/repositories/in-memory-receipt-repository';
 import { PointsCalculator } from '../../utils/points-calculator';
 import { ReceiptService } from './receipt-service';
 import { IReceiptService } from './receipt-service-interface';
@@ -9,7 +9,7 @@ import { IReceiptService } from './receipt-service-interface';
  * @returns {ReceiptService}
  */
 export const getReceiptService = (
-  inMemoryReceiptRepository = new InMemoryReceiptDatabase(),
+  inMemoryReceiptRepository = new InMemoryReceiptRepository(),
   pointsCalculator = new PointsCalculator()
 ): IReceiptService => {
   return new ReceiptService(inMemoryReceiptRepository, pointsCalculator);
