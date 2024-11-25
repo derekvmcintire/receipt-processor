@@ -1,8 +1,9 @@
-import { ReceiptService, IReceiptService } from './receipt-service';
+import { ReceiptService } from './receipt-service';
 import { HTTPError } from '../../../../interface/errors/http-error';
 import { InMemoryReceiptDatabase } from '../../../../infrastructure/database/in-memory-receipt-database';
 import { PointsCalculator } from '../../utils/points-calculator';
 import * as crypto from 'crypto'; // Import crypto module directly
+import { IReceiptService } from './receipt-service-interface';
 
 // Since randomUUID is a function on the crypto module, we need to
 // import crypto directly and spy on randomUUID

@@ -2,8 +2,8 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import { getReceiptService } from '../../application/core/domain/services/receipt-service-factory';
 import { HTTPError } from '../errors/http-error';
 import { Receipt, mockReceipt } from '../../types/domain/receipt';
-import { IReceiptService } from '../../application/core/domain/services/receipt-service';
 import { processReceiptController } from './receipt-controller';
+import { IReceiptService } from '../../application/core/domain/services/receipt-service-interface';
 
 jest.mock(
   '../../application/core/domain/services/receipt-service-factory',
