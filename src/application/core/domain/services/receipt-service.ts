@@ -2,6 +2,8 @@ import { PointsCalculator } from '../../utils/points-calculator';
 import { InMemoryReceiptRepository } from '../../../../infrastructure/repositories/in-memory-receipt-repository';
 import { IReceiptService } from './receipt-service-interface';
 import { Receipt } from '../entities/receipt';
+import { GetPointsResponse } from '../../../../types/http/get-receipt-points';
+import { HTTPError } from '../../../../interface/errors/http-error';
 
 /**
  * Service class that encapsulates the core business logic for processing receipts.
@@ -39,5 +41,28 @@ export class ReceiptService implements IReceiptService {
     this.repository.save(receipt.id, receipt, points);
 
     return receipt.id;
+  }
+
+  /**
+   * Retrieves the points for a receipt using its unique ID.
+   *
+   * This method attempts to fetch the receipt from the repository using the provided ID.
+   * If the receipt is found, it returns the associated points. If not, it throws an error.
+   *
+   * @param {string} id - The unique ID of the receipt to retrieve points for.
+   * @returns {GetPointsResponse | null} The points associated with the receipt.
+   * @throws {HTTPError} Throws an error if the receipt cannot be found in the repository.
+   */
+  findReceiptPoints(id: string): GetPointsResponse | null {
+    const savedReceipt = this.repository.find(id);
+
+    if (!savedReceipt) {
+      throw new HTTPError(
+        `Unable to retrieve saved Receipt from id ${id}`,
+        404
+      );
+    }
+
+    return { points: savedReceipt.points };
   }
 }

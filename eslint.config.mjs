@@ -6,7 +6,6 @@ import tseslint from 'typescript-eslint';
 export default [
   {
     files: ['**/*.{js,mjs,cjs,ts}'],
-    ignorePatterns: ['coverage/'],
     languageOptions: {
       globals: {
         ...globals.browser, // Keep browser globals if needed

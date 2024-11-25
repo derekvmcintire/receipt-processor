@@ -1,5 +1,7 @@
-import { Receipt } from '../../../../types/domain/receipt';
-import { GetPointsResponse } from '../../../../types/http/get-receipt-points';
+import {
+  Receipt,
+  ReceiptWithIdAndPoints,
+} from '../../../../types/domain/receipt';
 
 /**
  * Interface for a receipt repository.
@@ -18,7 +20,7 @@ export interface IReceiptRepository {
   /**
    * Finds a receipt by its ID and returns its associated points.
    * @param {string} id - The receipt ID.
-   * @returns {GetPointsResponse | null} The points associated with the receipt, or null if not found.
+   * @returns {ReceiptWithIdAndPoints | null} The points associated with the receipt, or null if not found.
    */
-  find(id: string): GetPointsResponse | null;
+  find(id: string): ReceiptWithIdAndPoints | null;
 }

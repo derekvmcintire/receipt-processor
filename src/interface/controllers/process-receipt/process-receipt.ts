@@ -1,8 +1,8 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { Receipt } from '../../types/domain/receipt';
-import { getReceiptService } from '../../application/core/domain/services/receipt-service-factory';
-import { PostReceiptResponse } from '../../types/http/process-receipt';
-import { HTTPError } from '../errors/http-error';
+import { Receipt } from '../../../types/domain/receipt';
+import { getReceiptService } from '../../../application/core/domain/services/receipt-service-factory';
+import { PostReceiptResponse } from '../../../types/http/process-receipt';
+import { HTTPError } from '../../errors/http-error';
 
 /**
  * Controller function for processing a receipt.

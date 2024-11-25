@@ -1,6 +1,9 @@
 import { Receipt } from '../../types/domain/receipt';
 import { InMemoryReceiptRepository } from './in-memory-receipt-repository';
 
+// Mocking the singleton method `getInstance` to control the instance used in the test
+jest.spyOn(InMemoryReceiptRepository, 'getInstance');
+
 describe('InMemoryReceiptRepository', () => {
   let repository: InMemoryReceiptRepository;
 
@@ -19,7 +22,9 @@ describe('InMemoryReceiptRepository', () => {
   };
 
   beforeEach(() => {
-    repository = new InMemoryReceiptRepository();
+    // Mock the `getInstance` to return a new, fresh instance of the repository for each test
+    repository = InMemoryReceiptRepository.getInstance();
+    jest.clearAllMocks(); // Clear mock calls to ensure clean tests
   });
 
   describe('save', () => {
@@ -49,7 +54,7 @@ describe('InMemoryReceiptRepository', () => {
 
       const result = repository.find('receipt1');
 
-      expect(result).toEqual({ points: 10 });
+      expect(result).toEqual({ ...mockReceipt, id: 'receipt1', points: 10 });
     });
 
     it('should return null for a non-existent receipt', () => {
