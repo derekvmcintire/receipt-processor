@@ -2,7 +2,7 @@ import { FastifyInstance } from 'fastify';
 import { API_PROCESS_PATH, API_RECEIPTS_PATH } from '../../../../../constants';
 import { Receipt } from '../../../../../types/domain/receipt';
 import { PostReceiptResponse } from '../../../../../types/http/process-receipt';
-import { processReceiptController } from '../../../../controllers/receipt-controller';
+import { processReceiptController } from '../../../../controllers/process-receipt';
 
 const PROCESS_RECEIPT_URL_PATH = `/${API_RECEIPTS_PATH}/${API_PROCESS_PATH}`;
 

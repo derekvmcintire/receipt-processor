@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import { getReceiptService } from '../../application/core/domain/services/receipt-service-factory';
 import { HTTPError } from '../errors/http-error';
 import { Receipt, mockReceipt } from '../../types/domain/receipt';
-import { processReceiptController } from './receipt-controller';
+import { processReceiptController } from './process-receipt';
 import { IReceiptService } from '../../application/core/domain/services/receipt-service-interface';
 
 jest.mock(
@@ -31,6 +31,7 @@ describe('processReceiptController', () => {
 
     mockedReceiptService = {
       processReceipt: jest.fn().mockReturnValue('12345'), // Mock processReceipt to return a receipt ID
+      findReceiptPoints: jest.fn(),
     };
 
     // Mock the getReceiptService factory function to return the mocked ReceiptService

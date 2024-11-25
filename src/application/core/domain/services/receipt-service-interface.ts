@@ -1,4 +1,5 @@
 import { Receipt } from '../../../../types/domain/receipt';
+import { GetPointsResponse } from '../../../../types/http/get-receipt-points';
 
 /**
  * Interface representing the ReceiptService for processing receipts
@@ -11,4 +12,6 @@ export interface IReceiptService {
    * @returns {string} The generated receipt ID.
    */
   processReceipt(receipt: Receipt): string;
+
+  findReceiptPoints(id: string): GetPointsResponse | null;
 }

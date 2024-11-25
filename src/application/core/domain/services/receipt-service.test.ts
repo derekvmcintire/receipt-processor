@@ -4,9 +4,6 @@ import { PointsCalculator } from '../../utils/points-calculator';
 import { InMemoryReceiptRepository } from '../../../../infrastructure/repositories/in-memory-receipt-repository';
 import { Receipt } from '../entities/receipt';
 
-jest.mock(
-  '../../../../infrastructure/repositories/in-memory-receipt-repository'
-);
 jest.mock('../../utils/points-calculator');
 
 describe('ReceiptService', () => {
@@ -26,14 +23,23 @@ describe('ReceiptService', () => {
   };
 
   beforeEach(() => {
-    mockRepository =
-      new InMemoryReceiptRepository() as jest.Mocked<InMemoryReceiptRepository>;
-    mockRepository.save.mockImplementation((id) => id);
+    // Mocking the Singleton's getInstance method to return a mocked repository instance
+    mockRepository = {
+      find: jest.fn(),
+      save: jest.fn(),
+    } as unknown as jest.Mocked<InMemoryReceiptRepository>;
 
+    // Mock the getInstance method of the InMemoryReceiptRepository class
+    jest
+      .spyOn(InMemoryReceiptRepository, 'getInstance')
+      .mockReturnValue(mockRepository);
+
+    // Mock the PointsCalculator
     mockPointsCalculator =
       new PointsCalculator() as jest.Mocked<PointsCalculator>;
     mockPointsCalculator.calculate.mockReturnValue(50);
 
+    // Create the ReceiptService instance using the mocked repository
     receiptService = new ReceiptService(mockRepository, mockPointsCalculator);
   });
 
@@ -59,6 +65,40 @@ describe('ReceiptService', () => {
       );
       expect(mockPointsCalculator.calculate).not.toHaveBeenCalled();
       expect(mockRepository.save).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('findReceiptPoints', () => {
+    it('should return points when receipt is found', () => {
+      const receiptId = '123';
+      const receipt = new Receipt(validReceiptData);
+      receipt.id = receiptId;
+
+      // Simulate saving the receipt in the repository
+      mockRepository.find.mockReturnValueOnce({
+        ...receipt,
+        id: receiptId,
+        points: 50,
+      });
+
+      const result = receiptService.findReceiptPoints(receiptId);
+
+      expect(result).toEqual({ points: 50 });
+      expect(mockRepository.find).toHaveBeenCalledWith(receiptId);
+    });
+
+    it('should throw 404 error when receipt is not found', () => {
+      const receiptId = 'nonexistent-id';
+
+      // Simulate no receipt found in the repository
+      mockRepository.find.mockReturnValueOnce(null);
+
+      expect(() => receiptService.findReceiptPoints(receiptId)).toThrow(
+        new HTTPError(
+          `Unable to retrieve saved Receipt from id ${receiptId}`,
+          404
+        )
+      );
     });
   });
 });

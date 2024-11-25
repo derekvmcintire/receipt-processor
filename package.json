@@ -9,8 +9,8 @@
     "pretty": "prettier --write .",
     "pretty:check": "prettier --check . --fix",
     "lint": "eslint .",
-    "docker-build": "docker build -t fastify-app .",
-    "docker-run": "docker run -p 3000:3000 fastify-app"
+    "docker:build": "docker build -t fastify-app .",
+    "docker:run": "docker run -p 3000:3000 fastify-app"
   },
   "keywords": [],
   "author": "",

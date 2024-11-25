@@ -15,6 +15,10 @@ export interface ReceiptWithId extends Receipt {
   id: string;
 }
 
+export interface ReceiptWithIdAndPoints extends ReceiptWithId {
+  points: number;
+}
+
 /*
  * * * Mock values * * *
  */
