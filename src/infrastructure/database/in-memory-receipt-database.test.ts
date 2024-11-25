@@ -1,5 +1,5 @@
 import { Receipt } from '../../types/domain/receipt';
-import { InMemoryReceiptDatabase } from './in-memory-database';
+import { InMemoryReceiptDatabase } from './in-memory-receipt-database';
 
 describe('InMemoryReceiptRepository', () => {
   let repository: InMemoryReceiptDatabase;

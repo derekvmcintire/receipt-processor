@@ -4,8 +4,6 @@ import { getReceiptService } from '../../application/core/domain/services/receip
 import { PostReceiptResponse } from '../../types/http/process-receipt';
 import { HTTPError } from '../errors/http-error';
 
-const receiptService = getReceiptService();
-
 /**
  * Controller function for processing a receipt.
  * This is the handler for processing receipt-related requests.
@@ -21,6 +19,7 @@ export async function processReceiptController(
 ) {
   try {
     const receipt = request.body;
+    const receiptService = getReceiptService();
     const receiptId = receiptService.processReceipt(receipt);
 
     // HTTP status 201 if saving the receipt is successfull
