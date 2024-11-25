@@ -10,6 +10,12 @@ import { versionRedirectHook } from './interface/hooks/version-redirect-hook';
 const fastify = createFastifyInstance();
 
 /**
+ * Export the logger for use in other modules.
+ * This ensures all logs are tied to the same Fastify instance.
+ */
+export const logger = fastify.log; // @TODO implement logging
+
+/**
  * Define a basic health check route at the root ("/").
  * This route is often used for monitoring the server's status.
  */
