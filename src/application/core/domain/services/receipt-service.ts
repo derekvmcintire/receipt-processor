@@ -12,7 +12,6 @@ export interface IReceiptService {
   saveReceipt(id: string, receipt: Receipt, points: number): void;
 }
 
-
 /**
  * Service class that handles the core business logic for processing receipts.
  * It includes methods for validating receipt data, calculating points, and saving receipts.

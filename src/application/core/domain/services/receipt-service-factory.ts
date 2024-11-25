@@ -7,9 +7,9 @@ import { IReceiptService, ReceiptService } from './receipt-service';
  *
  * @returns {ReceiptService}
  */
-export const getReceiptService = (): IReceiptService => {
-  const inMemoryReceiptRepository = new InMemoryReceiptDatabase();
-  const pointsCalculator = new PointsCalculator();
-
-  return new ReceiptService(inMemoryReceiptRepository, pointsCalculator); // This now returns IReceiptService
+export const getReceiptService = (
+  inMemoryReceiptRepository = new InMemoryReceiptDatabase(),
+  pointsCalculator = new PointsCalculator()
+): IReceiptService => {
+  return new ReceiptService(inMemoryReceiptRepository, pointsCalculator);
 };

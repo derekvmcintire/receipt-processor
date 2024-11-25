@@ -43,7 +43,6 @@ export class PointsCalculator {
       calculateAlphaNumericCharactersPoints: () => {
         // Log the result of the regex to inspect what's happening
         const cleanedRetailer = receipt.retailer.replace(/[^a-zA-Z0-9]/g, '');
-        console.log('Cleaned retailer:', cleanedRetailer); // Log output
         return cleanedRetailer.length; // Count alphanumeric characters only
       },
 
