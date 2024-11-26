@@ -34,6 +34,11 @@ export class PointsCalculator {
    * @returns An object with calculation methods for each rule.
    */
   private withReceipt(receipt: Receipt) {
+    // Convert pruchaseDate and purchaseTime to a Date object for cleaner calculations
+    const receiptDate = new Date(
+      receipt.purchaseDate + ' ' + receipt.purchaseTime
+    );
+
     return {
       /**
        * Rule 1: One point for every alphanumeric character in the retailer name.
@@ -41,7 +46,6 @@ export class PointsCalculator {
        * @returns Points for alphanumeric characters in the retailer name.
        */
       calculateAlphaNumericCharactersPoints: () => {
-        // Log the result of the regex to inspect what's happening
         const cleanedRetailer = receipt.retailer.replace(/[^a-zA-Z0-9]/g, '');
         return cleanedRetailer.length; // Count alphanumeric characters only
       },
@@ -97,7 +101,7 @@ export class PointsCalculator {
        * @returns Points based on whether the purchase date day is odd.
        */
       calculateOddPurchaseDatePoints: () => {
-        const day = parseInt(receipt.purchaseDate.split('-')[2], 10);
+        const day = receiptDate.getDate();
         return day % 2 !== 0 ? 6 : 0;
       },
 
@@ -107,8 +111,16 @@ export class PointsCalculator {
        * @returns Points for purchases made in the specified time range.
        */
       calculatePurchaseTimePoints: () => {
-        const [hour, minute] = receipt.purchaseTime.split(':').map(Number);
-        return hour === 14 || (hour === 15 && minute === 0) ? 10 : 0;
+        const purchaseTime =
+          receiptDate.getHours() * 60 + receiptDate.getMinutes(); // Time in minutes since midnight
+        const startTime = 14 * 60; // 2:00 PM in minutes since midnight
+        const endTime = 16 * 60; // 4:00 PM in minutes since midnight
+
+        if (purchaseTime >= startTime && purchaseTime < endTime) {
+          return 10;
+        }
+
+        return 0;
       },
     };
   }
