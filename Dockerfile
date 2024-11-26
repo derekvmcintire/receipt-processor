@@ -21,3 +21,6 @@ EXPOSE 3000
 
 # Run the compiled server file (from dist folder)
 CMD ["node", "dist/server.js"]
+
+# Add a health check to verify the app is running
+HEALTHCHECK CMD curl --fail http://localhost:3000/ || exit 1
