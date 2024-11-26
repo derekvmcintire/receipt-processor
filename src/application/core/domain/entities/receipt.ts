@@ -45,11 +45,12 @@ export class Receipt implements ReceiptWithId {
    */
   private validateRequiredFields(): void {
     if (
-      !this.retailer ||
-      !this.purchaseDate ||
-      !this.purchaseTime ||
+      !this.retailer.trim() ||
+      !this.purchaseDate.trim() ||
+      !this.purchaseTime.trim() ||
       !this.items ||
-      !this.total
+      this.items.length < 1 ||
+      !this.total.trim()
     ) {
       throw new HTTPError(
         'Invalid receipt data. Required fields: retailer, purchaseDate, purchaseTime, items, total.',
