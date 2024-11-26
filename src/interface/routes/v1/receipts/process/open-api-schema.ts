@@ -1,9 +1,9 @@
 export const processReceiptOpenApiSchema = {
   schema: {
     description: 'Process a receipt and return an ID.',
-    tags: ['Receipt'], // This helps with Swagger organization
+    tags: ['Receipt'],
     body: {
-      // Here, we define the request body schema for the POST request
+      // the request body schema for the POST request
       type: 'object',
       properties: {
         retailer: { type: 'string' },

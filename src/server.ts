@@ -49,8 +49,8 @@ fastify.addHook('onRequest', versionRedirectHook);
  * Add an endpoint to serve the OpenAPI spec as a JSON file.
  * This allows you to access the OpenAPI spec at `/openapi.json`.
  */
-fastify.get('/openapi.json', async (request, reply) => {
-  const openapiSpec = fastify.swagger(); // Use fastify.swagger() to get the OpenAPI schema
+fastify.get('/openapi.json', async (_request, reply) => {
+  const openapiSpec = fastify.swagger();
   reply.send(openapiSpec);
 });
 

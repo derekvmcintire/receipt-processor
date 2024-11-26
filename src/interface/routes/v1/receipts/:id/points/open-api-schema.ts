@@ -1,7 +1,7 @@
 export const receiptPointsOpenApiSchema = {
   schema: {
     description: 'Get points for a specific receipt',
-    tags: ['Receipt'], // This helps with Swagger organization
+    tags: ['Receipt'],
     params: {
       type: 'object',
       properties: {

@@ -11,11 +11,11 @@ export const startServer = async (fastify: FastifyInstance) => {
     // Wait for Fastify to be fully ready, including all plugins (Swagger, etc.)
     await fastify.ready();
 
-    // Optionally, log or access the OpenAPI schema once the server is ready
+    // logging the openapi schema on start up
     const openapiSchema = fastify.swagger();
     console.log('OpenAPI Schema:', openapiSchema);
 
-    // Now, start the server after everything is ready
+    // start the server after everything is ready
     const address = await fastify.listen({ port: 3000, host: '0.0.0.0' });
     console.log(`Server listening on: ${address}`);
   } catch (err) {

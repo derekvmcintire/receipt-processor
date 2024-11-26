@@ -9,6 +9,10 @@ import { receiptPointsOpenApiSchema } from './open-api-schema';
 
 const RECEIPT_POINTS_URL_PATH = `/${API_RECEIPTS_PATH}/:id/${API_POINTS_PATH}`;
 
+/**
+ * A plugin that provides encapsulated routes
+ * @param {FastifyInstance} fastify encapsulated fastify instance
+ */
 export default async function getPointsRoute(fastify: FastifyInstance) {
   fastify.get<{
     Params: { id: string };

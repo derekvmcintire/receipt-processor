@@ -12,6 +12,7 @@ import swaggerUi from '@fastify/swagger-ui'; // Import the Swagger UI plugin for
  * @param fastify - The Fastify instance to register the plugins with.
  */
 export async function registerSwagger(fastify: FastifyInstance) {
+  // Register the swagger plugin, this generates the openApi json spec
   await fastify.register(swagger, {
     openapi: {
       info: {
