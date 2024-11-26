@@ -214,13 +214,19 @@ But also includes interface and infrastructure classes:
 - controllers
 - `InMemoryReceiptRepository` class
 
-- **Test Suites**: 6
-- **Total Tests**: 26
-- **Code Coverage**:
-  - Overall statement coverage: **97.67%**
-  - Branch coverage: **85.71%**
-  - Function coverage: **95.45%**
-  - Line coverage: **97.64%**
+---
+
+### Overview
+
+**Test Suites**: 6
+**Total Tests**: 26
+**Code Coverage**:
+
+- Overall statement coverage: 98.31%
+- Branch coverage: 92.1%
+- Function coverage: 96.66%
+- Line coverage: 98.3%
+
 
 ---
 
