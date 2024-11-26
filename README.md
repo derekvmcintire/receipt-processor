@@ -234,10 +234,6 @@ But also includes interface and infrastructure classes:
 
 ### **Coverage Chart**
 
----
-
-### **Updated Code Coverage**
-
 ```
 Coverage %   Statements    Branches   Functions    Lines
 ┌────────────┬─────────────┬──────────┬────────────┬──────────┐
