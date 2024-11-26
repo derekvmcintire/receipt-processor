@@ -3,6 +3,7 @@ import { HTTPError } from '../../../../interface/errors/http-error';
 import { PointsCalculator } from '../../utils/points-calculator';
 import { InMemoryReceiptRepository } from '../../../../infrastructure/repositories/in-memory-receipt-repository';
 import { Receipt } from '../entities/receipt';
+import { mockReceipt } from '../../../../types/domain/receipt';
 
 jest.mock('../../utils/points-calculator');
 
@@ -11,16 +12,7 @@ describe('ReceiptService', () => {
   let mockRepository: jest.Mocked<InMemoryReceiptRepository>;
   let mockPointsCalculator: jest.Mocked<PointsCalculator>;
 
-  const validReceiptData = {
-    retailer: 'Test Retailer',
-    purchaseDate: '2024-10-10',
-    purchaseTime: '14:30',
-    total: '100',
-    items: [
-      { shortDescription: 'Item 1', price: '10' },
-      { shortDescription: 'Item 2', price: '20' },
-    ],
-  };
+  const validReceiptData = mockReceipt;
 
   beforeEach(() => {
     // Mocking the Singleton's getInstance method to return a mocked repository instance
@@ -71,6 +63,7 @@ describe('ReceiptService', () => {
   describe('findReceiptPoints', () => {
     it('should return points when receipt is found', () => {
       const receiptId = '123';
+      console.log('validReceiptData: ', validReceiptData);
       const receipt = new Receipt(validReceiptData);
       receipt.id = receiptId;
 

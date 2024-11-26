@@ -95,6 +95,10 @@ npm run dev
 
 ### **5. Run with Docker**
 
+#### **Getting Started**
+
+You must have Docker installed to run this API in a Docker container. If you are unfamiliar with, or need to install it, you can reference this [Documentation](https://docs.docker.com/get-started/)
+
 #### **a. Build the Docker Image**
 
 ```bash
@@ -109,6 +113,7 @@ npm run docker:run
 
 - The server will be accessible at [http://localhost:3000](http://localhost:3000).
 - Swagger documentation will be available at [http://localhost:3000/docs](http://localhost:3000/docs).
+- This [Docker Cheatsheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf) may be useful if you are not familiar with docker.
 
 ---
 
@@ -157,6 +162,9 @@ npm run lint
 - If you encounter errors during development, check the logs output in the terminal.
 - Ensure the required ports (e.g., `3000`) are not in use by other applications.
 - If Docker fails to run, verify your Docker installation and ensure it is running.
+- Run `docker ps` to see containers that are running and `docker stop <id>` to stop a container.
+- If it seems like things aren't quite right, try re-building docker with --no-cache, sometimes the container can get stuck.
+- 
 
 ---
 

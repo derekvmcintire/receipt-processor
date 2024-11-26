@@ -1,5 +1,4 @@
-import { Receipt } from '../domain/receipt';
-import { mockReceipt } from '../mocks';
+import { Receipt, mockReceipt } from '../domain/receipt';
 
 export type ProcessReceiptPayload = Receipt;
 
