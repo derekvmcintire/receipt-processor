@@ -28,8 +28,9 @@ export async function processReceiptController(
     if (error instanceof HTTPError) {
       reply.status(error.statusCode).send({ error: error.message });
     } else {
-      console.error('Error in processReceiptController:', error); // @TODO console logging generic errors for visibility, since the fastify logger is not configured
-      reply.status(500).send({ error: 'An unexpected error occurred.' });
+      reply
+        .status(500)
+        .send({ error: `An unexpected error occurred: ${error?.message}` });
     }
   }
 }
