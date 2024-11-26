@@ -9,13 +9,8 @@ export class PointsCalculator {
    *
    * @param receipt - The receipt object containing details of the purchase.
    * @returns The total points calculated for the receipt.
-   * @throws {Error} Throws an error if a valid Date object can not be constructed.
    */
   calculate(receipt: Receipt): number {
-    const receiptDate = new Date(
-      receipt.purchaseDate + ' ' + receipt.purchaseTime
-    );
-
     // Bind receipt to all calculation rules
     const rules = this.withReceipt(receipt);
 
@@ -26,8 +21,8 @@ export class PointsCalculator {
       rules.calculateMultipleOfPointTwentyFivePoints() +
       rules.calculateEveryTwoItemsPoints() +
       rules.calculateItemDescriptionLengthPoints() +
-      rules.calculateOddPurchaseDatePoints(receiptDate) +
-      rules.calculatePurchaseTimePoints(receiptDate)
+      rules.calculateOddPurchaseDatePoints() +
+      rules.calculatePurchaseTimePoints()
     );
   }
 
@@ -39,6 +34,11 @@ export class PointsCalculator {
    * @returns An object with calculation methods for each rule.
    */
   private withReceipt(receipt: Receipt) {
+    // Convert pruchaseDate and purchaseTime to a Date object for cleaner calculations
+    const receiptDate = new Date(
+      receipt.purchaseDate + ' ' + receipt.purchaseTime
+    );
+
     return {
       /**
        * Rule 1: One point for every alphanumeric character in the retailer name.
@@ -100,7 +100,7 @@ export class PointsCalculator {
        *
        * @returns Points based on whether the purchase date day is odd.
        */
-      calculateOddPurchaseDatePoints: (receiptDate: Date) => {
+      calculateOddPurchaseDatePoints: () => {
         const day = receiptDate.getDate();
         return day % 2 !== 0 ? 6 : 0;
       },
@@ -110,7 +110,7 @@ export class PointsCalculator {
        *
        * @returns Points for purchases made in the specified time range.
        */
-      calculatePurchaseTimePoints: (receiptDate: Date) => {
+      calculatePurchaseTimePoints: () => {
         const purchaseTime =
           receiptDate.getHours() * 60 + receiptDate.getMinutes(); // Time in minutes since midnight
         const startTime = 14 * 60; // 2:00 PM in minutes since midnight
