@@ -2,7 +2,7 @@ import { registerRoutes } from './interface/routes';
 import { createFastifyInstance } from './infrastructure/config/fastify-config';
 import { startServer } from './infrastructure/config/server-config';
 import { versionRedirectHook } from './interface/hooks/version-redirect-hook';
-import { registerSwagger } from './infrastructure/config/swagger-config';
+import { registerSwagger, swaggerExample } from './infrastructure/config/swagger-config';
 
 /**
  * Instantiate the Fastify server instance with custom configuration.
@@ -43,7 +43,8 @@ registerRoutes(fastify);
  * - Parameter descriptions
  * - Response status codes and descriptions
  */
-registerSwagger(fastify);
+// registerSwagger(fastify);
+// swaggerExample(fastify);
 
 /**
  * Add an endpoint to serve the OpenAPI spec as a JSON file.

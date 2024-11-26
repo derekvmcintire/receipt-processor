@@ -6,13 +6,12 @@ import { getReceiptPointsController } from '../../../../../controllers/get-recei
 const RECEIPT_POINTS_URL_PATH = `/${API_RECEIPTS_PATH}/:id/${API_POINTS_PATH}`;
 
 export default async function getPointsRoute(fastify: FastifyInstance) {
+  // Add OpenAPI schema for the route documentation
   fastify.get<{ Params: { id: string }; Reply: GetPointsResponse }>(
     RECEIPT_POINTS_URL_PATH,
     {
       schema: {
-        description: 'Retrieve the points for the specified receipt ID.',
-        tags: ['receipt'],
-        params: { // Here, we define the parameters in the URL path
+        params: { 
           type: 'object',
           properties: {
             id: { type: 'string' },
@@ -37,4 +36,5 @@ export default async function getPointsRoute(fastify: FastifyInstance) {
     },
     getReceiptPointsController
   );
+
 }

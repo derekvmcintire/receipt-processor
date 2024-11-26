@@ -16,8 +16,8 @@ export default async function processReceiptRoute(fastify: FastifyInstance) {
           type: 'object',
           properties: {
             retailer: { type: 'string' },
-            purchaseDate: { type: 'string', format: 'date' },
-            purchaseTime: { type: 'string', format: 'time' },
+            purchaseDate: { type: 'string' },
+            purchaseTime: { type: 'string' },
             items: {
               type: 'array',
               items: {
