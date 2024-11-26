@@ -1,7 +1,7 @@
 import { PointsCalculator } from '../../utils/points-calculator';
 import { InMemoryReceiptRepository } from '../../../../infrastructure/repositories/in-memory-receipt-repository';
 import { IReceiptService } from './receipt-service-interface';
-import { Receipt } from '../entities/receipt';
+import { ReceiptEntity } from '../entities/receipt';
 import { GetPointsResponse } from '../../../../types/http/get-receipt-points';
 import { HTTPError } from '../../../../interface/errors/http-error';
 
@@ -34,8 +34,8 @@ export class ReceiptService implements IReceiptService {
    * @returns The unique ID of the successfully processed receipt.
    * @throws Will throw an error if the receipt data is invalid or saving fails.
    */
-  processReceipt(data: Omit<Receipt, 'id'>): string {
-    const receipt = new Receipt(data);
+  processReceipt(data: Omit<ReceiptEntity, 'id'>): string {
+    const receipt = new ReceiptEntity(data);
     const points = this.pointsCalculator.calculate(receipt);
 
     this.repository.save(receipt.id, receipt, points);
