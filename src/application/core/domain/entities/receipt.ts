@@ -49,7 +49,6 @@ export class Receipt implements ReceiptWithId {
       !this.purchaseDate.trim() ||
       !this.purchaseTime.trim() ||
       !this.items ||
-      this.items.length < 1 ||
       !this.total.trim()
     ) {
       throw new HTTPError(
