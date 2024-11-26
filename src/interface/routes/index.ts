@@ -8,6 +8,7 @@ import { API_VERSION_ONE_PREFIX } from '../../constants';
  * Routes are grouped under versioned prefixes for better API version management.
  *
  * @param {FastifyInstance} fastify - The Fastify server instance to register routes on.
+ * @returns {void}
  */
 export const registerRoutes = (fastify: FastifyInstance) => {
   fastify.register(processReceiptRoute, {

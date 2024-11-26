@@ -14,6 +14,12 @@ export const versionRedirectHook = (
   reply: FastifyReply,
   done: HookHandlerDoneFunction
 ) => {
+  // Exclude the /docs or /v1/docs route from version redirection
+  if (request.url.startsWith('/docs')) {
+    done(); // Don't redirect for Swagger UI
+    return;
+  }
+
   // Check if the request URL already includes a version prefix (e.g., /v1/)
   const versionedRoute = /^\/v\d+\//.test(request.url);
 
