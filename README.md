@@ -203,6 +203,10 @@ Performance benchmarks for key endpoints show high throughput and low latency, w
 
 ## **Test Coverage**
 
+Near complete test coverage, focusing on core business logic:
+- `PointsCalculator` class
+- 
+
 - **Test Suites**: 6
 - **Total Tests**: 26
 - **Code Coverage**:
