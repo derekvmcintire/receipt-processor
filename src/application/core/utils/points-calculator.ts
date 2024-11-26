@@ -4,6 +4,8 @@ import { Receipt } from '../../../types/domain/receipt';
  * PointsCalculator calculates reward points based on a set of predefined rules.
  */
 export class PointsCalculator {
+  private receiptDate: Date;
+
   /**
    * Main method to calculate total points for a given receipt.
    *
@@ -11,6 +13,11 @@ export class PointsCalculator {
    * @returns The total points calculated for the receipt.
    */
   calculate(receipt: Receipt): number {
+    // Initialize the receiptDate with the actual date and time of the receipt
+    this.receiptDate = new Date(
+      receipt.purchaseDate + ' ' + receipt.purchaseTime
+    ); // Assuming purchaseTime is a string like "14:30"
+
     // Bind receipt to all calculation rules
     const rules = this.withReceipt(receipt);
 
@@ -41,7 +48,6 @@ export class PointsCalculator {
        * @returns Points for alphanumeric characters in the retailer name.
        */
       calculateAlphaNumericCharactersPoints: () => {
-        // Log the result of the regex to inspect what's happening
         const cleanedRetailer = receipt.retailer.replace(/[^a-zA-Z0-9]/g, '');
         return cleanedRetailer.length; // Count alphanumeric characters only
       },
@@ -97,8 +103,8 @@ export class PointsCalculator {
        * @returns Points based on whether the purchase date day is odd.
        */
       calculateOddPurchaseDatePoints: () => {
-        const day = parseInt(receipt.purchaseDate.split('-')[2], 10);
-        return day % 2 !== 0 ? 6 : 0;
+        const day = this.receiptDate.getDate(); // Get the day of the month from receiptDate
+        return day % 2 !== 0 ? 6 : 0; // Check if the day is odd
       },
 
       /**
@@ -107,8 +113,17 @@ export class PointsCalculator {
        * @returns Points for purchases made in the specified time range.
        */
       calculatePurchaseTimePoints: () => {
-        const [hour, minute] = receipt.purchaseTime.split(':').map(Number);
-        return hour === 14 || (hour === 15 && minute === 0) ? 10 : 0;
+        const purchaseTime =
+          this.receiptDate.getHours() * 60 + this.receiptDate.getMinutes(); // Time in minutes since midnight
+        const startTime = 14 * 60; // 2:00 PM in minutes since midnight
+        const endTime = 16 * 60; // 4:00 PM in minutes since midnight
+
+        // Check if the purchase time is between 2:00 PM and 4:00 PM
+        if (purchaseTime >= startTime && purchaseTime < endTime) {
+          return 10;
+        }
+
+        return 0;
       },
     };
   }

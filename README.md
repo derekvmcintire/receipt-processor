@@ -164,9 +164,7 @@ npm run lint
 - If Docker fails to run, verify your Docker installation and ensure it is running.
 - Run `docker ps` to see containers that are running and `docker stop <id>` to stop a container.
 - If it seems like things aren't quite right, try re-building docker with --no-cache, sometimes the container can get stuck.
-- 
-
----
+- ***
 
 ### **Summary of npm Scripts**
 
