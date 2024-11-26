@@ -1,20 +1,12 @@
 import { Receipt } from '../entities/receipt';
 import { HTTPError } from '../../../../interface/errors/http-error';
 import { generateRandomUUID } from '../../../../utils/uuid-generator'; // Import the UUID utility
+import { mockReceipt } from '../../../../types/domain/receipt';
 
 jest.mock('../../../../utils/uuid-generator'); // mock `generateRandomUUID`
 
 describe('Receipt Entity', () => {
-  const validReceiptData = {
-    retailer: 'Test Retailer',
-    purchaseDate: '2024-10-10',
-    purchaseTime: '14:30',
-    total: '100',
-    items: [
-      { shortDescription: 'Item 1', price: '10' },
-      { shortDescription: 'Item 2', price: '20' },
-    ],
-  };
+  const validReceiptData = mockReceipt;
 
   const mockGenerateUUID = jest
     .fn()
