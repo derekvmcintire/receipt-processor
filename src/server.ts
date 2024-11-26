@@ -25,14 +25,6 @@ const fastify = createFastifyInstance();
 registerSwagger(fastify);
 
 /**
- * Define a basic health check route at the root ("/").
- * This route is often used for monitoring the server's status.
- */
-fastify.get('/', async () => {
-  return { message: 'Receipt Processor API' };
-});
-
-/**
  * Register all routes for the application.
  * This function will add routes defined in the 'registerRoutes' module to the Fastify server.
  */
@@ -44,15 +36,6 @@ registerRoutes(fastify);
  * before processing incoming requests.
  */
 fastify.addHook('onRequest', versionRedirectHook);
-
-/**
- * Add an endpoint to serve the OpenAPI spec as a JSON file.
- * This allows you to access the OpenAPI spec at `/openapi.json`.
- */
-fastify.get('/openapi.json', async (_request, reply) => {
-  const openapiSpec = fastify.swagger();
-  reply.send(openapiSpec);
-});
 
 /**
  * Start the Fastify server and begin listening for incoming requests.
