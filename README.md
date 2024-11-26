@@ -219,7 +219,9 @@ But also includes interface and infrastructure classes:
 ### Overview
 
 **Test Suites**: 6
+
 **Total Tests**: 26
+
 **Code Coverage**:
 
 - Overall statement coverage: 98.31%
