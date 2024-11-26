@@ -12,7 +12,8 @@ export default async function processReceiptRoute(fastify: FastifyInstance) {
     {
       schema: {
         description: 'Process a receipt and return an ID.',
-        body: { // Here, we define the request body schema for the POST request
+        body: {
+          // Here, we define the request body schema for the POST request
           type: 'object',
           properties: {
             retailer: { type: 'string' },
