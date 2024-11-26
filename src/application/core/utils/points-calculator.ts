@@ -16,12 +16,6 @@ export class PointsCalculator {
       receipt.purchaseDate + ' ' + receipt.purchaseTime
     );
 
-    if (isNaN(receiptDate.getTime())) {
-      throw new Error(
-        'Unable to calculate points with purchaseDate or purchaseTime'
-      );
-    }
-
     // Bind receipt to all calculation rules
     const rules = this.withReceipt(receipt);
 

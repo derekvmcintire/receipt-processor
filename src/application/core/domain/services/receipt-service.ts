@@ -35,18 +35,12 @@ export class ReceiptService implements IReceiptService {
    * @throws Will throw an error if the receipt data is invalid or saving fails.
    */
   processReceipt(data: Omit<Receipt, 'id'>): string {
-    try {
-      const receipt = new Receipt(data);
-      const points = this.pointsCalculator.calculate(receipt);
+    const receipt = new Receipt(data);
+    const points = this.pointsCalculator.calculate(receipt);
 
-      this.repository.save(receipt.id, receipt, points);
+    this.repository.save(receipt.id, receipt, points);
 
-      return receipt.id;
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'Unknown error';
-      throw new HTTPError(errorMessage, 400);
-    }
+    return receipt.id;
   }
 
   /**
