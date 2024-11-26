@@ -74,7 +74,7 @@ describe('Receipt Entity', () => {
         { shortDescription: '', price: '10.00' }, // Invalid item
         { shortDescription: 'Item 2', price: '5.00' },
       ],
-      total: '15.00'
+      total: '15.00',
     };
 
     expect(
@@ -106,16 +106,14 @@ describe('Receipt Entity', () => {
 
     expect(
       () => new ReceiptEntity(invalidReceiptData, generateRandomUUID)
-    ).toThrow(
-      new HTTPError(
-        `Item at index 0 has an invalid 'price'.`,
-        400
-      )
-    );
+    ).toThrow(new HTTPError(`Item at index 0 has an invalid 'price'.`, 400));
   });
 
   it('should throw an HTTPError if the purchaseDate format is invalid', () => {
-    const invalidReceiptData = { ...validReceiptData, purchaseDate: 'invalid-date' };
+    const invalidReceiptData = {
+      ...validReceiptData,
+      purchaseDate: 'invalid-date',
+    };
 
     expect(
       () => new ReceiptEntity(invalidReceiptData, generateRandomUUID)
@@ -128,7 +126,10 @@ describe('Receipt Entity', () => {
   });
 
   it('should throw an HTTPError if the purchaseTime format is invalid', () => {
-    const invalidReceiptData = { ...validReceiptData, purchaseTime: 'invalid-time' };
+    const invalidReceiptData = {
+      ...validReceiptData,
+      purchaseTime: 'invalid-time',
+    };
 
     expect(
       () => new ReceiptEntity(invalidReceiptData, generateRandomUUID)
