@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "docker:build": "docker build -t fastify-app .",
     "docker:run": "docker run -p 3000:3000 fastify-app",
-    "autocannon": "autocannon -c 10 -d 20"
+    "autocannon": "autocannon -c 10 -d 20 ",
+    "autocannon:process": "autocannon -c 10 -d 20 -b @benchmark/payload.json -H 'Content-Type: application/json' http://localhost:3000/v1/receipts/process"
   },
   "keywords": [],
   "author": "",
