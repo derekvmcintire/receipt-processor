@@ -111,7 +111,6 @@ export class Receipt implements ReceiptWithId {
    * Throws an HTTPError if the formats are incorrect.
    */
   private validateDateAndTimeFormats(): void {
-    // Validate purchaseDate against multiple valid formats.
     const validDate = this.isValidDate(this.purchaseDate);
     if (!validDate) {
       throw new HTTPError(
@@ -134,11 +133,7 @@ export class Receipt implements ReceiptWithId {
    * Checks if the provided date string is valid. Accepts various common date formats.
    */
   private isValidDate(date: string): boolean {
-    // Try to create a new Date object from the date string.
     const parsedDate = new Date(date);
-
-    // Ensure the parsed date is valid and matches the format.
-    // Validates formats like YYYY-MM-DD, MM/DD/YYYY, YYYY/MM/DD, and others recognized by JS.
     return !isNaN(parsedDate.getTime());
   }
 

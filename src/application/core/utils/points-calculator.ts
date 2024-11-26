@@ -116,7 +116,6 @@ export class PointsCalculator {
         const startTime = 14 * 60; // 2:00 PM in minutes since midnight
         const endTime = 16 * 60; // 4:00 PM in minutes since midnight
 
-        // Check if the purchase time is between 2:00 PM and 4:00 PM
         if (purchaseTime >= startTime && purchaseTime < endTime) {
           return 10;
         }
