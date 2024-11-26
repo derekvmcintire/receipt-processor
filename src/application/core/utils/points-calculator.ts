@@ -4,8 +4,6 @@ import { Receipt } from '../../../types/domain/receipt';
  * PointsCalculator calculates reward points based on a set of predefined rules.
  */
 export class PointsCalculator {
-  private receiptDate: Date;
-
   /**
    * Main method to calculate total points for a given receipt.
    *
@@ -13,10 +11,15 @@ export class PointsCalculator {
    * @returns The total points calculated for the receipt.
    */
   calculate(receipt: Receipt): number {
-    // Initialize the receiptDate with the actual date and time of the receipt
-    this.receiptDate = new Date(
+    const receiptDate = new Date(
       receipt.purchaseDate + ' ' + receipt.purchaseTime
-    ); // Assuming purchaseTime is a string like "14:30"
+    );
+
+    if (isNaN(receiptDate.getTime())) {
+      throw new Error(
+        'Unable to calculate points with purchaseDate or purchaseTime'
+      );
+    }
 
     // Bind receipt to all calculation rules
     const rules = this.withReceipt(receipt);
@@ -28,8 +31,8 @@ export class PointsCalculator {
       rules.calculateMultipleOfPointTwentyFivePoints() +
       rules.calculateEveryTwoItemsPoints() +
       rules.calculateItemDescriptionLengthPoints() +
-      rules.calculateOddPurchaseDatePoints() +
-      rules.calculatePurchaseTimePoints()
+      rules.calculateOddPurchaseDatePoints(receiptDate) +
+      rules.calculatePurchaseTimePoints(receiptDate)
     );
   }
 
@@ -102,9 +105,9 @@ export class PointsCalculator {
        *
        * @returns Points based on whether the purchase date day is odd.
        */
-      calculateOddPurchaseDatePoints: () => {
-        const day = this.receiptDate.getDate(); // Get the day of the month from receiptDate
-        return day % 2 !== 0 ? 6 : 0; // Check if the day is odd
+      calculateOddPurchaseDatePoints: (receiptDate: Date) => {
+        const day = receiptDate.getDate();
+        return day % 2 !== 0 ? 6 : 0;
       },
 
       /**
@@ -112,9 +115,9 @@ export class PointsCalculator {
        *
        * @returns Points for purchases made in the specified time range.
        */
-      calculatePurchaseTimePoints: () => {
+      calculatePurchaseTimePoints: (receiptDate: Date) => {
         const purchaseTime =
-          this.receiptDate.getHours() * 60 + this.receiptDate.getMinutes(); // Time in minutes since midnight
+          receiptDate.getHours() * 60 + receiptDate.getMinutes(); // Time in minutes since midnight
         const startTime = 14 * 60; // 2:00 PM in minutes since midnight
         const endTime = 16 * 60; // 4:00 PM in minutes since midnight
 
