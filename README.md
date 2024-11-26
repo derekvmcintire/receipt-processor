@@ -230,6 +230,7 @@ But also includes interface and infrastructure classes:
 
 ### **Updated Code Coverage**
 
+```
 Coverage %   Statements    Branches   Functions    Lines
 ┌────────────┬─────────────┬──────────┬────────────┬──────────┐
 │ Directory  │    98.31    │   92.1   │   96.66    │   98.3   │
@@ -239,7 +240,7 @@ Coverage %   Statements    Branches   Functions    Lines
 │ Utilities  │    91.66    │   70.00  │   88.88    │   91.66  │
 │ Controllers│    100.00   │  100.00  │   100.00   │  100.00  │
 └────────────┴─────────────┴──────────┴────────────┴──────────┘
-
+```
 
 ---
 
