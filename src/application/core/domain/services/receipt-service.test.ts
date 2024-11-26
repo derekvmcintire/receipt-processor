@@ -11,7 +11,7 @@ describe('ReceiptService', () => {
   let receiptService: ReceiptService;
   let mockRepository: jest.Mocked<InMemoryReceiptRepository>;
   let mockPointsCalculator: jest.Mocked<PointsCalculator>;
-  
+
   const validReceiptData = mockReceipt;
 
   beforeEach(() => {
