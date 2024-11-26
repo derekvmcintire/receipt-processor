@@ -43,7 +43,7 @@ registerRoutes(fastify);
  * In this case, the 'onRequest' hook is used to perform actions (e.g., redirects)
  * before processing incoming requests.
  */
-// fastify.addHook('onRequest', versionRedirectHook);
+fastify.addHook('onRequest', versionRedirectHook);
 
 /**
  * Add an endpoint to serve the OpenAPI spec as a JSON file.
