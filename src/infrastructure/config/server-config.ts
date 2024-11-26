@@ -7,17 +7,20 @@ import { FastifyInstance } from 'fastify';
  * @returns {Promise<void>} A promise that resolves when the server starts.
  */
 export const startServer = async (fastify: FastifyInstance) => {
-  // Listen on port 3000 and bind to all network interfaces (0.0.0.0)
-  fastify.listen(
-    { port: 3000, host: '0.0.0.0' },
-    (err: Error | null, address: string) => {
-      if (err) {
-        // Log the error and terminate the process if the server fails to start
-        fastify.log.error(err);
-        process.exit(1);
-      }
-      // Log the server's address once it starts successfully
-      console.log(`Server listening on: ${address}`);
-    }
-  );
+  try {
+    // Wait for Fastify to be fully ready, including all plugins (Swagger, etc.)
+    await fastify.ready();
+
+    // logging the openapi schema on start up
+    const openapiSchema = fastify.swagger();
+    console.log('OpenAPI Schema:', openapiSchema);
+
+    // start the server after everything is ready
+    const address = await fastify.listen({ port: 3000, host: '0.0.0.0' });
+    console.log(`Server listening on: ${address}`);
+  } catch (err) {
+    // If there’s any error during startup (including plugin registration)
+    fastify.log.error(err);
+    process.exit(1);
+  }
 };
