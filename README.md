@@ -230,21 +230,23 @@ But also includes interface and infrastructure classes:
 
 ### **Updated Code Coverage**
 
-Coverage % Statements Branches Functions Lines
+Coverage %   Statements    Branches   Functions    Lines
 ┌────────────┬─────────────┬──────────┬────────────┬──────────┐
-│ Directory │ 98.31 │ 92.1 │ 96.66 │ 98.3 │
+│ Directory  │    98.31    │   92.1   │   96.66    │   98.3   │
 ├────────────┼─────────────┼──────────┼────────────┼──────────┤
-│ Entities │ 100.00 │ 100.00 │ 100.00 │ 100.00 │
-│ Services │ 100.00 │ 100.00 │ 100.00 │ 100.00 │
-│ Utilities │ 91.66 │ 70.00 │ 88.88 │ 91.66 │
-│ Controllers│ 100.00 │ 100.00 │ 100.00 │ 100.00 │
+│ Entities   │    100.00   │  100.00  │   100.00   │  100.00  │
+│ Services   │    100.00   │  100.00  │   100.00   │  100.00  │
+│ Utilities  │    91.66    │   70.00  │   88.88    │   91.66  │
+│ Controllers│    100.00   │  100.00  │   100.00   │  100.00  │
 └────────────┴─────────────┴──────────┴────────────┴──────────┘
+
 
 ---
 
 ## **Future Considerations**
 
 - **Logging & Monitoring**: Integrate logging (`pino` Fastify's built-in logger is one option) and set up centralized logging. Implement performance monitoring.
+  
 - **CI/CD Workflow**: Set up a GitHub Actions workflow for automated testing, linting, building Docker images, and deploying to staging/production environments.
 
 - **Security Enhancements**:
@@ -253,4 +255,4 @@ Coverage % Statements Branches Functions Lines
   - **Rate Limiting**: Fastify offers `@fastify/rate-limit` to prevent abuse and DoS attacks.
   - **JWT Authentication**: Fastify offers `@fastify/jwt` for user authentication.
 
----
+--- 
