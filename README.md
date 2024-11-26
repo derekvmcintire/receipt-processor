@@ -241,7 +241,6 @@ But also includes interface and infrastructure classes:
 ## **Future Considerations**
 
 - **Logging & Monitoring**: Integrate logging (`pino` Fastify's built-in logger is one option) and set up centralized logging. Implement performance monitoring.
-  
 - **CI/CD Workflow**: Set up a GitHub Actions workflow for automated testing, linting, building Docker images, and deploying to staging/production environments.
 
 - **Security Enhancements**:
@@ -250,4 +249,4 @@ But also includes interface and infrastructure classes:
   - **Rate Limiting**: Fastify offers `@fastify/rate-limit` to prevent abuse and DoS attacks.
   - **JWT Authentication**: Fastify offers `@fastify/jwt` for user authentication.
 
---- 
+---
