@@ -7,7 +7,7 @@ import { generateRandomUUID } from '../../../../utils/uuid-generator';
  * This class encapsulates the core properties and behaviors of a receipt,
  * including validation logic to ensure data integrity.
  */
-export class Receipt implements ReceiptWithId {
+export class ReceiptEntity implements ReceiptWithId {
   id: string;
   retailer: string;
   purchaseDate: string;

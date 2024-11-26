@@ -203,6 +203,17 @@ Performance benchmarks for key endpoints show high throughput and low latency, w
 
 ## **Test Coverage**
 
+Near complete test coverage, focusing on core business logic:
+
+- `PointsCalculator` class
+- `ReceiptEntity` class
+- `ReceiptService` class
+
+But also includes interface and infrastructure classes:
+
+- controllers
+- `InMemoryReceiptRepository` class
+
 - **Test Suites**: 6
 - **Total Tests**: 26
 - **Code Coverage**:
@@ -226,3 +237,17 @@ Performance benchmarks for key endpoints show high throughput and low latency, w
   │ Repos      │    100.00   │  100.00  │   100.00   │  100.00  │
   └────────────┴─────────────┴──────────┴────────────┴──────────┘
 ```
+
+## **Future Considerations**
+
+- **Logging & Monitoring**: Integrate logging (`pino` Fastify's built-in logger is one option) and set up centralized logging. Implement performance monitoring.
+  
+- **CI/CD Workflow**: Set up a GitHub Actions workflow for automated testing, linting, building Docker images, and deploying to staging/production environments.
+
+- **Security Enhancements**:
+  - **CORS**: Fastify offers `@fastify/cors` to restrict API access to trusted domains.
+  - **HTTP Headers**: Fastify offers `@fastify/helmet` to protect http headers.
+  - **Rate Limiting**: Fastify offers `@fastify/rate-limit` to prevent abuse and DoS attacks.
+  - **JWT Authentication**: Fastify offers `@fastify/jwt` for user authentication.
+
+--- 

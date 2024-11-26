@@ -1,4 +1,4 @@
-import { Receipt } from '../entities/receipt';
+import { ReceiptEntity } from '../entities/receipt';
 import { HTTPError } from '../../../../interface/errors/http-error';
 import { generateRandomUUID } from '../../../../utils/uuid-generator'; // Import the UUID utility
 import { mockReceipt } from '../../../../types/domain/receipt';
@@ -22,9 +22,9 @@ describe('Receipt Entity', () => {
   });
 
   it('should create a Receipt instance with valid data and a generated ID', () => {
-    const receipt = new Receipt(validReceiptData, generateRandomUUID);
+    const receipt = new ReceiptEntity(validReceiptData, generateRandomUUID);
 
-    expect(receipt).toBeInstanceOf(Receipt);
+    expect(receipt).toBeInstanceOf(ReceiptEntity);
     expect(receipt.id).toBe('123e4567-e89b-12d3-a456-426614174000');
     expect(mockGenerateUUID).toHaveBeenCalledTimes(1);
   });
@@ -32,7 +32,9 @@ describe('Receipt Entity', () => {
   it('should throw an HTTPError if required fields are missing', () => {
     const invalidReceiptData = { ...validReceiptData, retailer: '' };
 
-    expect(() => new Receipt(invalidReceiptData, generateRandomUUID)).toThrow(
+    expect(
+      () => new ReceiptEntity(invalidReceiptData, generateRandomUUID)
+    ).toThrow(
       new HTTPError(
         'Invalid receipt data. Required fields: retailer, purchaseDate, purchaseTime, items, total.',
         400
@@ -41,7 +43,7 @@ describe('Receipt Entity', () => {
   });
 
   it('should allow overriding the ID if provided', () => {
-    const receiptWithId = new Receipt(
+    const receiptWithId = new ReceiptEntity(
       { ...validReceiptData, id: 'custom-id' },
       generateRandomUUID
     );
