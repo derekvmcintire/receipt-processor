@@ -32,7 +32,7 @@
 - **Considered**: Hexagonal, Domain-Driven Design (DDD), MVC, Clean Architecture
 - **Decided on**: Clean Architecture
 
-*I am aware that the architecture of this API is well beyond what was requested in the instructions, or would be suitable for a simple MVP, but I had the time available and wanted to build something to a professional standard that would be scaleable, maintainable and readable. Following the Clean Architecture principles provides a strong foundation for growith, and ensures that the codebase remains flexible and easy to extend.
+*I am aware that the architecture of this API is well beyond what was requested in the instructions, or would be suitable for a simple MVP, but I had the time available and wanted to build something to a professional standard that would be scaleable, maintainable and readable.
 
 #### Rationale:
 
