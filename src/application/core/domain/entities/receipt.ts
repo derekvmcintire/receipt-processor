@@ -111,20 +111,43 @@ export class Receipt implements ReceiptWithId {
    * Throws an HTTPError if the formats are incorrect.
    */
   private validateDateAndTimeFormats(): void {
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Validate YYYY-MM-DD format
-    if (!dateRegex.test(this.purchaseDate)) {
+    // Validate purchaseDate against multiple valid formats.
+    const validDate = this.isValidDate(this.purchaseDate);
+    if (!validDate) {
       throw new HTTPError(
-        'Invalid purchaseDate format. Expected format: YYYY-MM-DD.',
+        'Invalid purchaseDate format. Expected a valid date format (e.g., YYYY-MM-DD, MM/DD/YYYY).',
         400
       );
     }
 
-    const timeRegex = /^\d{2}:\d{2}$/; // Validate HH:MM format
-    if (!timeRegex.test(this.purchaseTime)) {
+    // Validate purchaseTime against the HH:mm format (24-hour clock).
+    const validTime = this.isValidTime(this.purchaseTime);
+    if (!validTime) {
       throw new HTTPError(
-        'Invalid purchaseTime format. Expected format: HH:MM.',
+        'Invalid purchaseTime format. Expected format: HH:MM (24-hour clock).',
         400
       );
     }
+  }
+
+  /**
+   * Checks if the provided date string is valid. Accepts various common date formats.
+   */
+  private isValidDate(date: string): boolean {
+    // Try to create a new Date object from the date string.
+    const parsedDate = new Date(date);
+
+    // Ensure the parsed date is valid and matches the format.
+    // Validates formats like YYYY-MM-DD, MM/DD/YYYY, YYYY/MM/DD, and others recognized by JS.
+    return !isNaN(parsedDate.getTime());
+  }
+
+  /**
+   * Validates the purchase time format as HH:mm (24-hour clock).
+   */
+  private isValidTime(time: string): boolean {
+    // Regex for HH:mm format, where HH are 00-23 and mm are 00-59.
+    const timeRegex = /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/;
+    return timeRegex.test(time);
   }
 }

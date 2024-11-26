@@ -97,8 +97,14 @@ describe('PointsCalculator', () => {
       total: '35.35',
     };
 
+    const receiptDate = new Date(
+      receipt.purchaseDate + ' ' + receipt.purchaseTime
+    );
+
     const points =
-      calculator['withReceipt'](receipt).calculateOddPurchaseDatePoints();
+      calculator['withReceipt'](receipt).calculateOddPurchaseDatePoints(
+        receiptDate
+      );
     expect(points).toBe(6); // Odd purchase date (1st)
   });
 
@@ -111,8 +117,14 @@ describe('PointsCalculator', () => {
       total: '35.35',
     };
 
+    const receiptDate = new Date(
+      receipt.purchaseDate + ' ' + receipt.purchaseTime
+    );
+
     const points =
-      calculator['withReceipt'](receipt).calculatePurchaseTimePoints();
+      calculator['withReceipt'](receipt).calculatePurchaseTimePoints(
+        receiptDate
+      );
     expect(points).toBe(10); // Purchase time is between 2:00 PM and 4:00 PM
   });
 
@@ -125,8 +137,14 @@ describe('PointsCalculator', () => {
       total: '35.35',
     };
 
+    const receiptDate = new Date(
+      receipt.purchaseDate + ' ' + receipt.purchaseTime
+    );
+
     const points =
-      calculator['withReceipt'](receipt).calculatePurchaseTimePoints();
+      calculator['withReceipt'](receipt).calculatePurchaseTimePoints(
+        receiptDate
+      );
     expect(points).toBe(0); // Purchase time is not between 2:00 PM and 4:00 PM
   });
 });

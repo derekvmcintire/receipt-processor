@@ -9,6 +9,7 @@ export class PointsCalculator {
    *
    * @param receipt - The receipt object containing details of the purchase.
    * @returns The total points calculated for the receipt.
+   * @throws {Error} Throws an error if a valid Date object can not be constructed.
    */
   calculate(receipt: Receipt): number {
     const receiptDate = new Date(
