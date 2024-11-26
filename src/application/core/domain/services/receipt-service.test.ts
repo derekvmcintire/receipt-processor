@@ -63,7 +63,7 @@ describe('ReceiptService', () => {
   describe('findReceiptPoints', () => {
     it('should return points when receipt is found', () => {
       const receiptId = '123';
-      console.log('validReceiptData: ', validReceiptData);
+
       const receipt = new ReceiptEntity(validReceiptData);
       receipt.id = receiptId;
 
