@@ -34,9 +34,9 @@ export class ReceiptEntity implements ReceiptWithId {
    */
   private validate(): void {
     this.validateRequiredFields();
-    this.validateTotal();
     this.validateItems();
     this.validateDateAndTimeFormats();
+    this.validateTotal();
   }
 
   /**
