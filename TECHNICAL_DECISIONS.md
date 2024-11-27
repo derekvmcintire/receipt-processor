@@ -74,7 +74,7 @@
 
 #### Rationale:
 
-- **OpenAPI Generation**: Fastify’s built-in schema validation and OpenAPI support integrate seamlessly with Swagger. This means that API documentation can be auto-generated from route schemadefinitions. Since these schema definitions also enforce request validation, this helps ensure documentation is always up-to-date since it is generated from the source of truth.
+- **OpenAPI Generation**: Fastify’s built-in schema validation and OpenAPI support integrate seamlessly with Swagger. This means that API documentation can be auto-generated from route schema definitions. Since these schema definitions also enforce request validation, this helps ensure documentation is always up-to-date since it is generated from the source of truth.
 - **Interactivity**: Swagger UI provides an interactive interface, allowing developers to easily test API endpoints directly from the documentation.
 - **Standardization**: Swagger/OpenAPI is a widely adopted standard for API documentation, making it easier to integrate with other tools and services.
 
