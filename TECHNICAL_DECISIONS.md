@@ -31,14 +31,13 @@
 
 - **Considered**: Hexagonal, Domain-Driven Design (DDD), MVC, Clean Architecture
 - **Decided on**: Clean Architecture
-
-*I am aware that the architecture of this API is well beyond what was requested in the instructions, or would be suitable for a simple MVP, but I had the time available and wanted to build something to a professional standard that would be scaleable, maintainable and readable.
+- **Achieved**: I think my project ended up using the Clean Architecture framework pretty loosely and taking influence from both Hexagonal and DDD. I achieved my main goal of separation between the core business logic and the external infrastructure, while also using interfaces to make sure that something like the in-memory repository could be easily swapped out for a real database. I still have a lot more to learn about designing software, but I enjoyed the process here.
 
 #### Rationale:
 
-- **Separation of Concerns**: Clean Architecture enforces a strong separation of concerns, which makes the codebase more maintainable and testable. The organization of layers (e.g., core/domain, application, infrastructure) is clear and reduces complexity.
-- **Testability**: The structure of Clean Architecture allows for easy unit testing and mocks, which aligns well with the use of Jest for testing in this project.
-- **Flexibility**: It allows for easy adaptation of different frameworks or infrastructure changes without affecting the core business logic.
+- **Separation of Concerns**: Clean Architecture enforces a clear separation between core business logic and external systems (e.g., databases, frameworks). This enhances maintainability and reduces complexity.
+- **Testability**: The layered structure supports easy unit testing of core logic and mocks of external dependencies, aligning well with Jest for testing.
+- **Flexibility**: The architecture allows for easy replacement or adaptation of infrastructure components (e.g., databases, frameworks) without impacting core business logic, promoting scalability and future-proofing.
 
 ---
 
@@ -96,7 +95,7 @@
 
 ## Folder Structure
 
-Folder structure follows a Clean Architecture approach, organizing code into separate layers that focus on specific concerns:
+Folder structure roughly follows a Clean Architecture approach, organizing code into separate layers that focus on specific concerns:
 
 ```
 src/
