@@ -1,6 +1,15 @@
 # **API Performance**
 
-Performance benchmarking results using Autocannon:
+Performance benchmarking results using **AutoCannon** to assess the scalability and reliability of key endpoints.
+
+### **Goals**
+
+- Validate the API's ability to handle concurrent requests under moderate traffic.
+- Identify latency and throughput benchmarks for optimization.
+- Ensure consistent performance across different endpoints.
+- Expectations are high since there is no database :)
+
+---
 
 ### **Summary of npm Scripts**
 
