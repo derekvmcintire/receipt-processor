@@ -10,6 +10,7 @@
     "pretty:check": "prettier --check . --fix",
     "lint": "eslint .",
     "docker:build": "docker build -t dvm-receipt-processor .",
+    "docker:build:no-cache": "docker build --no-cache -t dvm-receipt-processor .",
     "docker:run": "docker run -p 3000:3000 dvm-receipt-processor",
     "autocannon": "autocannon -c 10 -d 20 ",
     "autocannon:process": "autocannon -c 10 -d 20 -b @benchmark/payload.json -H 'Content-Type: application/json' http://localhost:3000/v1/receipts/process"

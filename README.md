@@ -176,23 +176,24 @@ npm run lint
 - Ensure the required ports (e.g., `3000`) are not in use by other applications.
 - If Docker fails to run, verify your Docker installation and ensure it is running.
 - Run `docker ps` to see containers that are running and `docker stop <id>` to stop a container then `docker rm <id>` to remove it.
-- If it seems like things aren't quite right, try re-building docker with --no-cache, sometimes the container can get stuck.
+- If it seems like things aren't quite right, try re-building docker with --no-cache, sometimes the image can get stale. `npm run docker:build:no-cache`
 
 ---
 
 ### **Summary of npm Scripts**
 
-| Command                      | Description                                                    |
-| ---------------------------- | -------------------------------------------------------------- |
-| `npm run dev`                | Runs the application in development mode with live reloading.  |
-| `npm start`                  | Runs the application in production mode.                       |
-| `npm test`                   | Runs all Jest tests.                                           |
-| `npm run pretty`             | Formats code using Prettier.                                   |
-| `npm run lint`               | Lints the code using ESLint.                                   |
-| `npm run docker:build`       | Builds a Docker image for the application.                     |
-| `npm run docker:run`         | Runs the application inside a Docker container on port `3000`. |
-| `npm run autocannon`         | Performs a load test. Requires a URL to be provided.           |
-| `npm run autocannon:process` | Performs a load test on receipt/process endpoint.              |
+| Command                          | Description                                                    |
+| -------------------------------- | -------------------------------------------------------------- |
+| `npm run dev`                    | Runs the application in development mode with live reloading.  |
+| `npm start`                      | Runs the application in production mode.                       |
+| `npm test`                       | Runs all Jest tests.                                           |
+| `npm run pretty`                 | Formats code using Prettier.                                   |
+| `npm run lint`                   | Lints the code using ESLint.                                   |
+| `npm run docker:build`           | Builds a Docker image for the application.                     |
+| `npm run docker:build:no-cache`  | Builds a Docker image without cache                            |
+| `npm run docker:run`             | Runs the application inside a Docker container on port `3000`. |
+| `npm run autocannon`             | Performs a load test. Requires a URL to be provided.           |
+| `npm run autocannon:process`     | Performs a load test on receipt/process endpoint.              |
 
 ---
 

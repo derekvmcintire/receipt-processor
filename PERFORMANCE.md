@@ -72,7 +72,7 @@ npm run autocannon <url>
 - **Connections**: 10
 - **Duration**: 20 seconds
 
-The above configuration is set with a default script in `package.json`. You can run it like this:
+The above configuration is set with a default script in `package.json` and pulls payload data from `benchmark/process-receipt-payload.json`. You can run it like this:
 
 ```bash
 npm run autocannon:process
