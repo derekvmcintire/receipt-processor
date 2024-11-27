@@ -33,8 +33,6 @@
 - **Decided on**: Clean Architecture
 - **Achieved**: I think my project ended up using the Clean Architecture framework pretty loosely and taking influence from both Hexagonal and DDD. I achieved my main goal of separation between the core business logic and the external infrastructure, while also using interfaces to make sure that something like the in-memory repository could be easily swapped out for a real database. I still have a lot more to learn about designing software, but I enjoyed the process here.
 
-\*I am aware that the architecture of this API is well beyond what was requested in the instructions, or would be suitable for a simple MVP, but I had the time available and wanted to build something to a professional standard that would be scaleable, maintainable and readable.
-
 #### Rationale:
 
 - **Separation of Concerns**: Clean Architecture enforces a clear separation between core business logic and external systems (e.g., databases, frameworks). This enhances maintainability and reduces complexity.
