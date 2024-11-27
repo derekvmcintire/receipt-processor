@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 /**
  * Generates a random UUID using the built-in `crypto.randomUUID()` method.
  *
