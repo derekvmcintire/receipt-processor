@@ -17,6 +17,10 @@ Swagger UI is available at [http://localhost:3000/docs](http://localhost:3000/do
   - **Response:** JSON with a generated receipt ID.
 - **Endpoint:** `/receipts/{id}/points` (GET)
   - **Response:** JSON with the number of points awarded for the receipt.
+- **Endpoint:** `/openapi.json` (GET)
+  - **Response:** JSON that represents the openapi spec used to populate the swagger ui.
+- **Endpoint:** `/` (GET)
+  - **Response:** JSON with a string to indicate the app is running and  healthy.
 
 ---
 
