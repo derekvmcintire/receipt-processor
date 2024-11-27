@@ -4,6 +4,8 @@
 
 **Objective:** Build a web service that implements the specified API for processing receipts.
 
+---
+
 **API Overview:**
 
 - **Endpoint:** `/receipts/process` (POST)
@@ -11,6 +13,9 @@
   - **Response:** JSON with a generated receipt ID.
 - **Endpoint:** `/receipts/{id}/points` (GET)
   - **Response:** JSON with the number of points awarded for the receipt.
+
+---
+
 
 **Technology Used:**
 
@@ -22,7 +27,7 @@
 - [AutoCannon](https://www.npmjs.com/package/autocannon): Used for benchmarking performance
 - **In-memory Storage**: There is no database, data is stored in a Map and will be lost if the server is restarted.
 
-This API was built as part of a code challenge for [Fetch Rewards](https://fetch.com/). For detailed instructions and rules, refer to the [full API documentation](link-to-api-docs).
+This API was built as part of a code challenge for [Fetch Rewards](https://fetch.com/). For detailed instructions and rules, refer to the [fetch-rewards/receipt-processor-challenge](https://github.com/fetch-rewards/receipt-processor-challenge) repository.
 
 ---
 
