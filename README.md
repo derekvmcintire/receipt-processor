@@ -214,29 +214,39 @@ But also includes interface and infrastructure classes:
 - controllers
 - `InMemoryReceiptRepository` class
 
-- **Test Suites**: 6
-- **Total Tests**: 26
-- **Code Coverage**:
-  - Overall statement coverage: **97.67%**
-  - Branch coverage: **85.71%**
-  - Function coverage: **95.45%**
-  - Line coverage: **97.64%**
+---
+
+### Overview
+
+**Test Suites**: 6
+
+**Total Tests**: 26
+
+**Code Coverage**:
+
+- Overall statement coverage: 98.31%
+- Branch coverage: 92.1%
+- Function coverage: 96.66%
+- Line coverage: 98.3%
+
 
 ---
 
 ### **Coverage Chart**
 
-```plaintext
-   Coverage %   Statements    Branches   Functions    Lines
-  ┌────────────┬─────────────┬──────────┬────────────┬──────────┐
-  │ Directory  │    97.67    │  85.71   │   95.45    │  97.64   │
-  ├────────────┼─────────────┼──────────┼────────────┼──────────┤
-  │ Entities   │    100.00   │  100.00  │   100.00   │  100.00  │
-  │ Services   │    100.00   │  100.00  │   100.00   │  100.00  │
-  │ Utilities  │     89.47   │   66.66  │    88.88   │   89.47  │
-  │ Repos      │    100.00   │  100.00  │   100.00   │  100.00  │
-  └────────────┴─────────────┴──────────┴────────────┴──────────┘
 ```
+Coverage %   Statements    Branches   Functions    Lines
+┌────────────┬─────────────┬──────────┬────────────┬──────────┐
+│ Directory  │    98.31    │   92.1   │   96.66    │   98.3   │
+├────────────┼─────────────┼──────────┼────────────┼──────────┤
+│ Entities   │    100.00   │  100.00  │   100.00   │  100.00  │
+│ Services   │    100.00   │  100.00  │   100.00   │  100.00  │
+│ Utilities  │    91.66    │   70.00  │   88.88    │   91.66  │
+│ Controllers│    100.00   │  100.00  │   100.00   │  100.00  │
+└────────────┴─────────────┴──────────┴────────────┴──────────┘
+```
+
+---
 
 ## **Future Considerations**
 

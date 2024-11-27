@@ -32,6 +32,8 @@
 - **Considered**: Hexagonal, Domain-Driven Design (DDD), MVC, Clean Architecture
 - **Decided on**: Clean Architecture
 
+*I am aware that the architecture of this API is well beyond what was requested in the instructions, or would be suitable for a simple MVP, but I had the time available and wanted to build something to a professional standard that would be scaleable, maintainable and readable.
+
 #### Rationale:
 
 - **Separation of Concerns**: Clean Architecture enforces a strong separation of concerns, which makes the codebase more maintainable and testable. The organization of layers (e.g., core/domain, application, infrastructure) is clear and reduces complexity.
