@@ -200,7 +200,14 @@ For a detailed breakdown of all technical decisions, see the [TECHNICAL_DECISION
 
 ## **API Performance**
 
-Performance benchmarks were set by using `AutoCannon` and show high throughput and low latency, with the `receipts/points` endpoint handling 15,744 requests/second and the `receipts/process` endpoint averaging 13,964 requests/second. This is not surprising considering the lack of a real database. For more details, see [PERFORMANCE.md](./PERFORMANCE.md).
+Performance benchmarks were set by using `AutoCannon` and show high throughput and low latency, which is not surprising considering the lack of a real database. 
+
+- **API Performance**:
+  - `receipts/points` endpoint: 15,744 requests/second
+  - `receipts/process` endpoint: 13,964 requests/second
+
+
+For more details, see [PERFORMANCE.md](./PERFORMANCE.md).
 
 ---
 
