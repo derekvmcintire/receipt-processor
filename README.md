@@ -26,7 +26,7 @@ Swagger UI is available at [http://localhost:3000/docs](http://localhost:3000/do
 
 **Technology Used:**
 
-- [TypeScript](https://www.typescriptlang.org/): Although the challenge preferred Go, I chose TypeScript for familiarity and confidence in delivering the solution. I plan to build this in Go later. (11/30/2024 edit: [done](https://github.com/derekvmcintire/go-receipt-processor)
+- [TypeScript](https://www.typescriptlang.org/): Although the challenge preferred Go, I chose TypeScript for familiarity and confidence in delivering the solution. I plan to build this in Go later. (11/30/2024 edit: [done](https://github.com/derekvmcintire/go-receipt-processor))
 - [Fastify](https://fastify.dev/): I wanted a lightweight, performant framework to use, since I am aware Go is generally more performant than Node.js. Although I have never used it before, I found it intuitive and easy to get something up and running quickly.
 - [Docker](https://www.docker.com/): One of the requirements of this challenge was to use docker, so the app is available in a docker container via `npm run docker:run`.
 - [Jest](https://jestjs.io/): I used jest for unit tests.
